@@ -26,5 +26,9 @@ module.exports.bootstrap = async function() {
   //   // etc.
   // ]);
   // ```
-
+  await User.destroy({});
+  await Address.destroy({});
+  Address.create({street:'Hinjewadi',city:'Pune', postalCode: '411057', state: 'Maharashtra', country: 'India'}).exec(console.log);
+  User.create({customerId: 123, password: 'ajay@1234', firstName: 'Ajay', lastName: 'Kumar', email: 'kajay5080@gmail.com', phone: 8208643713, address: 1}).exec(console.log);
+  //User.find({firstName:'Ajay'}).populate('address').exec(function(err,r){console.log(r[0].toJSON())});
 };
