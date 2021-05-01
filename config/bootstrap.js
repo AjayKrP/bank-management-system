@@ -9,7 +9,7 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
+module.exports.bootstrap = async function () {
 
   // By convention, this is a good place to set up fake data during development.
   //
@@ -28,7 +28,26 @@ module.exports.bootstrap = async function() {
   // ```
   await User.destroy({});
   await Address.destroy({});
-  Address.create({street:'Hinjewadi',city:'Pune', postalCode: '411057', state: 'Maharashtra', country: 'India'}).exec(console.log);
-  User.create({customerId: 123, password: 'ajay@1234', firstName: 'Ajay', lastName: 'Kumar', email: 'kajay5080@gmail.com', phone: 8208643713, address: 1}).exec(console.log);
+  await Branch.destroy({});
+  //EmailService.sendWelcomeMail({email: 'kajay5080@gmail.com'});
+  Branch.create({branchCode: 'SBIN0010203', branchName: 'Midc, Hinjewadi'}).exec(console.log);
+  Branch.create({branchCode: 'SBIN0008784', branchName: 'Sanewadipune, Pune'}).exec(console.log);
+  Address.create({
+    street: 'Hinjewadi',
+    city: 'Pune',
+    postalCode: '411057',
+    state: 'Maharashtra',
+    country: 'India'
+  }).exec(console.log);
+  /*
+  User.create({
+    customerId: 123,
+    password: 'ajay@1234',
+    firstName: 'Ajay',
+    lastName: 'Kumar',
+    email: 'kajay5080@gmail.com',
+    phone: 8208643713,
+    address: 1
+  }).exec(console.log); */
   //User.find({firstName:'Ajay'}).populate('address').exec(function(err,r){console.log(r[0].toJSON())});
 };
