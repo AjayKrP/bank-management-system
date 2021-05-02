@@ -31,7 +31,7 @@ module.exports = {
         message: 'Email address mismatch!'
       });
     }
-    let accountInfo = await AccountInfo.find({customerId: this.req.session.me.id}).populate('customerId');
+    let accountInfo = await AccountInfo.find({user: this.req.session.me.id}).populate('user');
     if (accountInfo) {
       return exits.success({
         info: accountInfo

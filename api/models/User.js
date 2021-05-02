@@ -53,10 +53,9 @@ module.exports = {
       example: 1508944074211,
       columnName: 'password_reset_token_expires_at',
     },
-    phone: {type: 'string', unique: true},
+    phone: {type: 'string'},
     address: {
       model: 'address',
-      unique: true,
     }
   },
   customToJSON: function () {

@@ -18,7 +18,7 @@ module.exports = {
       required: true
     },*/
     balance: {type: 'number', defaultsTo: 0},
-    customerId: {
+    user: {
       model: 'user'
     }
   },

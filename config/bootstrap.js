@@ -26,19 +26,19 @@ module.exports.bootstrap = async function () {
   //   // etc.
   // ]);
   // ```
-  await User.destroy({});
-  await Address.destroy({});
-  await Branch.destroy({});
+  //await User.destroy({});
+  //await Address.destroy({});
+  //await Branch.destroy({});
   //EmailService.sendWelcomeMail({email: 'kajay5080@gmail.com'});
-  Branch.create({branchCode: 'SBIN0010203', branchName: 'Midc, Hinjewadi'}).exec(console.log);
-  Branch.create({branchCode: 'SBIN0008784', branchName: 'Sanewadipune, Pune'}).exec(console.log);
-  Address.create({
+  //Branch.create({branchCode: 'SBIN0010203', branchName: 'Midc, Hinjewadi'}).exec(console.log);
+  //Branch.create({branchCode: 'SBIN0008784', branchName: 'Sanewadipune, Pune'}).exec(console.log);
+  /*Address.create({
     street: 'Hinjewadi',
     city: 'Pune',
     postalCode: '411057',
     state: 'Maharashtra',
     country: 'India'
-  }).exec(console.log);
+  }).exec(console.log);*/
   /*
   User.create({
     customerId: 123,
