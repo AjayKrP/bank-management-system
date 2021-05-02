@@ -54,6 +54,8 @@ module.exports = {
         });
       const token = await sails.helpers.generateNewJwtToken(user.email);
       this.req.me = user;
+      this.req.session.me = user;
+      this.req.session.save();
       return exits.success({
         message: `${user.email} has been logged in`,
         data: user,

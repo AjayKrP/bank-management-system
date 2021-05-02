@@ -1,14 +1,14 @@
 module.exports = {
   sendWelcomeMail: function (obj) {
+    console.log(obj);
     sails.hooks.email.send(
-      'welcomeEmail',
+      obj.email.template,
       {
-        Name: 'Hi Dear',
-        //accessToken:obj.accessToken
+        context: obj.email.context
       },
       {
-        to: obj.email,
-        subject: 'Welcome Email'
+        to: obj.email.to,
+        subject: obj.email.subject
       },
       function (err) {
         if (err) {

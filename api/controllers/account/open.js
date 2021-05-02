@@ -1,10 +1,10 @@
 module.exports = {
 
 
-  friendlyName: 'Create',
+  friendlyName: 'Open',
 
 
-  description: 'Create account.',
+  description: 'Open account.',
 
 
   inputs: {
@@ -39,10 +39,9 @@ module.exports = {
   },
 
 
-  fn: async function (req, inputs, exits) {
-    console.log(this.req.me.email);
+  fn: async function (inputs, exits) {
     try {
-      if (this.req.me.email !== inputs.email) {
+      if (this.req.session.me.email !== inputs.email) {
         return exits.error({
           message: 'Email mismatch! Please check your email and try again.'
         });
@@ -75,7 +74,7 @@ module.exports = {
       }
       let account = await AccountInfo.create({
         accountNo: await sails.helpers.generateAccountNo(),
-        customerId: this.req.me.id
+        customerId: this.req.session.me.id
       }).fetch();
 
       /**
@@ -87,7 +86,7 @@ module.exports = {
         subject: 'Account Create Successful',
         template: 'account-create',
         context: {
-          name: this.req.me.fullName,
+          name: this.req.session.me.fullName,
         },
       };
       //await sails.helpers.sendMail(email);

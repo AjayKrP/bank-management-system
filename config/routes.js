@@ -26,6 +26,14 @@ module.exports.routes = {
   'POST /user/login': 'user/login',
   'POST /user/forgot-password': 'user/forgot-password',
   'POST /user/reset-password': 'user/reset-password',
+  'POST /account/create': 'account/create',
+  'GET /account/info': 'account/info',
+  'POST /account/deposit': 'account/deposit',
+  'POST /account/withdraw': 'account/withdraw',
+  'POST /account/transfer': 'account/transfer',
+  'GET /account/history': 'account/history',
+  'POST /account/delete': 'account/delete',
+  'POST /account/open': 'account/open',
 
 
   /***************************************************************************

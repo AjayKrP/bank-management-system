@@ -19,5 +19,12 @@ module.exports.policies = {
 
   // '*': true,
   'user/login': 'can-login',
-  'user/forgot-password': 'can-login'
+  'user/forgot-password': 'can-login',
+  'account/create': 'can-login',
+  'account/info': 'can-login',
+  'account/deposit': 'can-login',
+  'account/withdraw': 'can-login',
+  'account/transfer': 'can-login',
+  'account/history': 'can-login',
+  'account/delete': 'can-login',
 };
