@@ -1,5 +1,5 @@
 module.exports = {
-  sendWelcomeMail: function (obj) {
+  sendMail: function (obj) {
     console.log(obj);
     sails.hooks.email.send(
       obj.email.template,

@@ -7,7 +7,7 @@
 
 module.exports = {
   getBranchCode: function (req, res) {
-    EmailService.sendWelcomeMail({email: 'kajay5080@gmail.com'});
+    EmailService.sendMail({email: 'kajay5080@gmail.com'});
     res.json({ping: true});
   }
 };

@@ -93,7 +93,7 @@ module.exports = {
         },
       };
       //await sails.helpers.sendMail(email);
-      EmailService.sendWelcomeMail({email: email});
+      EmailService.sendMail({email: email});
       return exits.success({
         message: `Your account has been created for ${this.req.session.me.email} successfully.`,
       });

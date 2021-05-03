@@ -19,9 +19,6 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    // All done.
-    return;
-
   }
 
 

@@ -29,7 +29,7 @@ module.exports.bootstrap = async function () {
   //await User.destroy({});
   //await Address.destroy({});
   //await Branch.destroy({});
-  //EmailService.sendWelcomeMail({email: 'kajay5080@gmail.com'});
+  //EmailService.sendMail({email: 'kajay5080@gmail.com'});
   //Branch.create({branchCode: 'SBIN0010203', branchName: 'Midc, Hinjewadi'}).exec(console.log);
   //Branch.create({branchCode: 'SBIN0008784', branchName: 'Sanewadipune, Pune'}).exec(console.log);
   /*Address.create({

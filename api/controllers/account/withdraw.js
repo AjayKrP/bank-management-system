@@ -43,6 +43,13 @@ module.exports = {
       });
     }
     let updatedAmount = await AccountInfo.updateOne({user: this.req.session.me.id}).set({balance: amountUpdated.balance - inputs.amount});
+    await History.create({
+      date:  new Date().toJSON(),
+      status: 'success',
+      type: 'debit',
+      amount: inputs.amount,
+      account: amountUpdated.id
+    });
     if (!updatedAmount) {
       return exits.error({
         message: 'Something went wrong while withdrawing!'
@@ -59,7 +66,7 @@ module.exports = {
       },
     };
     //await sails.helpers.sendMail(email);
-    EmailService.sendWelcomeMail({email: email});
+    EmailService.sendMail({email: email});
     return exits.success({
       message: 'Amount withdrawal successfully!'
     });
