@@ -9,12 +9,18 @@ module.exports = {
 
   inputs: {
     account: {
-      type: 'string',
-      required: true
+      type: 'number',
+      required: true,
+      example: 667175841
     },
     fullName: {
       type: 'string',
       required: true
+    },
+    amount: {
+      type: 'number',
+      required: true,
+      example: 200
     }
   },
 
@@ -40,13 +46,14 @@ module.exports = {
         message: 'Account Not Found!'
       });
     }
-    let customerDetails = await AccountInfo.find({accountNo: accountNo}).populate('user');
+    let customerDetails = await AccountInfo.findOne({accountNo: accountNo}).populate('user');
     if (!customerDetails) {
       return exits.error({
         message: 'No customer exists with this account No. Please contact bank manager'
       });
     }
-    if (customerDetails.fullName !== fullName) {
+    console.log(customerDetails);
+    if (customerDetails.user.fullName !== fullName) {
       return exits.error({
         message: 'Customer name mismatch! Pls try again'
       });
@@ -57,13 +64,29 @@ module.exports = {
         message: 'Error while fetching amount from sender account'
       });
     }
-    await History.create({
-      date: new Date().toJSON(),
+
+    History.addHistory({
       status: 'success',
-      type: 'debit',
+      type: 'transfer',
       amount: inputs.amount,
       account: senderAccountDetails.id
+    }, function (err, success) {
+      if (err) {
+        return res.negotiate(err);
+      }
     });
+    var email = {
+      to: this.req.session.me.email,
+      subject: 'Account Debit!',
+      template: 'withdraw',
+      context: {
+        name: this.req.session.me.fullName,
+        debitAmount: inputs.amount,
+        currentAmount: sender.balance
+      },
+    };
+    //await sails.helpers.sendMail(email);
+    EmailService.sendMail({email: email});
     let receiver = await AccountInfo.updateOne({accountNo: accountNo}).set({balance: accountDetails.balance + inputs.amount});
     if (!receiver) {
       await AccountInfo.updateOne({user: this.req.session.me.id}).set({balance: senderAccountDetails.balance + inputs.amount});
@@ -71,13 +94,30 @@ module.exports = {
         message: 'Error while adding amount to receiver account'
       });
     }
-    await History.create({
-      date: new Date().toJSON(),
+
+    email = {
+      to: customerDetails.user.email,
+      subject: 'Account Credit!',
+      template: 'deposit',
+      context: {
+        name: customerDetails.user.fullName,
+        creditAmount: inputs.amount,
+        currentAmount: receiver.balance
+      },
+    };
+    //await sails.helpers.sendMail(email);
+    EmailService.sendMail({email: email});
+    History.addHistory({
       status: 'success',
-      type: 'credit',
+      type: 'transfer',
       amount: inputs.amount,
       account: receiver.id
+    }, function (err, success) {
+      if (err) {
+        return res.negotiate(err);
+      }
     });
+
     return exits.success({
       message: 'Amount has been successfully transfered'
     });

@@ -20,11 +20,11 @@ module.exports.policies = {
   // '*': true,
   'user/login': 'can-login',
   'user/forgot-password': 'can-login',
-  /*'account/create': 'can-login',
-  'account/info': 'can-login',
-  'account/deposit': 'can-login',
-  'account/withdraw': 'can-login',
-  'account/transfer': 'can-login',
-  'account/history': 'can-login',
-  'account/delete': 'can-login',*/
+  'account/create': 'can-access',
+  'account/info': 'can-access',
+  'account/deposit': 'can-access',
+  'account/withdraw': 'can-access',
+  'account/transfer': 'can-access',
+  'account/history': 'can-access',
+  'account/delete': 'can-access',
 };

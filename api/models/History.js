@@ -20,5 +20,22 @@ module.exports = {
       required: true
     }
   },
+
+  /**
+   *
+   * @param inputs
+   * @param cb
+   */
+  addHistory: function (inputs, cb) {
+    // Create a user
+    History.create({
+      date: new Date().toJSON(),
+      status: inputs.status,
+      type: inputs.type,
+      amount: inputs.amount,
+      account: inputs.account
+    })
+      .exec(cb);
+  },
 };
 
