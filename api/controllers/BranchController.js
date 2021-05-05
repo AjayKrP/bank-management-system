@@ -6,8 +6,12 @@
  */
 
 module.exports = {
+  /**
+   * TODO Add branch codes here
+   * @param req
+   * @param res
+   */
   getBranchCode: function (req, res) {
-    EmailService.sendMail({email: 'kajay5080@gmail.com'});
     res.json({ping: true});
   }
 };

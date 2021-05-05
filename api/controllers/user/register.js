@@ -11,6 +11,7 @@ module.exports = {
     fullName: {
       type: 'string',
       required: true,
+      example: 'XYZ. Shah'
     },
     email: {
       type: 'string',

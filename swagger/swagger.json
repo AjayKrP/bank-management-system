@@ -628,7 +628,8 @@
             "name": "fullName",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "XYZ. Shah"
             }
           },
           {
@@ -671,8 +672,8 @@
     },
     "/user/confirm": {
       "get": {
-        "summary": "Confirm",
-        "description": "Confirm user.",
+        "summary": "Confirm user API",
+        "description": "Once user receive account Confirmation mail. Then on hitting that url it will verify users account.",
         "tags": [
           "User"
         ],
@@ -706,8 +707,8 @@
     },
     "/user/login": {
       "post": {
-        "summary": "Login",
-        "description": "Login user.",
+        "summary": "User Login API",
+        "description": "API for Login user. Without login users cant access any pages.",
         "tags": [
           "User"
         ],
@@ -717,7 +718,8 @@
             "name": "email",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "abc@xyz.com"
             }
           },
           {
@@ -725,7 +727,8 @@
             "name": "password",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "example": "xyes!567"
             }
           }
         ],
@@ -750,7 +753,8 @@
     },
     "/user/forgot-password": {
       "post": {
-        "summary": "Forgot password",
+        "summary": "API for Forgot password",
+        "description": "this API is Mainly responsible to reset users password",
         "tags": [
           "User"
         ],
@@ -1067,13 +1071,13 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "The requested resource"
+            "description": "History found!"
           },
           "404": {
             "description": "Resource not found"
           },
           "500": {
-            "description": "Internal server error"
+            "description": "Error! While getting history"
           }
         }
       }

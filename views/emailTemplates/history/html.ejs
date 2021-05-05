@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<section class="hero">
+    <h1 class="title">Hi, <%= context.name %></h1>
+</section>
+<main>
+    <p>Please find your account history for :</p>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Type</th>
+            <th>Date</th>
+        </tr>
+        <%if (context.history.length > 0){%>
+        <% for (var i = 0; i < context.history.length; ++i) {%>
+        <tr>
+            <td><%= context.history[i].amount %></td>
+            <td><%= context.history[i].status %></td>
+            <td><%= context.history[i].type %></td>
+            <td><%= context.history[i].date %></td>
+        </tr>
+        <%}%>
+        <%} else {%>
+            <p style="color: red;">Nothing found!</p>
+        <%}%>
+    </table>
+</main>
+<footer>
+    <p>🖤 Love,</p>
+</footer>
+</body>
+</html>

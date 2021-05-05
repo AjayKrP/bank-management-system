@@ -1,26 +1,77 @@
 # bank-management-system
 
-a [Sails v1](https://sailsjs.com) application
+System Requirements:
+1. Customer can create account with different type
+2. After account creation customer can login with his unique username and password
+3. System should create unique account number and encrypt his/her password
+4. Customer can add balance to his/her account
+5. Customer can send amount to another account
+6. Customer can close/edit his/her account
+7. System should able to notify customer on every ransactions
+8. System should able to return total intrest on the amount
+9. Customer should able to see his transaction history.
 
 
-### Links
+Use Cases:
 
-+ [Sails framework documentation](https://sailsjs.com/get-started)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+Customer: Can make transactions and avail other services if applicable
+System: Mainly responsible for sending notifications & genrating account number
 
-
-### Version info
-
-This app was originally generated on Thu Apr 29 2021 12:20:10 GMT+0530 (India Standard Time) using Sails v1.2.4.
-
-<!-- Internally, Sails used [`sails-generate@1.17.2`](https://github.com/balderdashy/sails-generate/tree/v1.17.2/lib/core-generators/new). -->
+A. Create/Edit/close Account: To create new account, edit or close account
+B. debit/credit fund: to debit/credit fund to the account
+C. transfer money: To make transaction to another account
+D. View Account History: Check all transactions of account
 
 
 
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
+Database Design:
+
+![database design](docs/database_design.png)
+
+Activity Diagram:
+![activity design](docs/activity_diagram.jpg)
+
+
+APIs
+- Create Account API
+```
+http://localhost:1337/user/register?fullName=Ajay Kumar&email=xyz@gmail.com&password=abc@123
+```
+- Login API
+```
+http://localhost:1337/user/login?email=xyz@gmail.com&password=abc@123
+```
+- Open Account API
+```
+http://localhost:1337/account/open?street=Hinjewadi&city=Pune&postalCode=411057&country=india
+```
+- Get Account Details API
+```
+http://localhost:1337/account/info?email=xyz@gmail.com
+```
+
+- Deposit money API
+```
+http://localhost:1337/account/deposit?amount=100453
+```
+
+- Withdraw Money API
+```
+http://localhost:1337/account/withdraw?amount=500
+```
+- Transfer Money API
+```
+http://localhost:1337/account/transfer?account=667175841&fullName=Ajay Kumar&amount=13
+```
+- Account History API
+```
+http://localhost:1337/account/history
+```
+
+
+Steps to run Application:
+1. Clone this repository to your local machine
+2. Go to  config/datastores.js and add your database connections
+3. Now open config/email.js and add correct username and password for the app
+4. Now you are ready to use our banking App.
 

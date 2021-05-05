@@ -1,11 +1,11 @@
 module.exports.email = {
-  service: 'SendGrid',
+  service: 'Gmail',
   auth: {
-    user: sails.locals.SENDGRID_USERNAME,
-    pass: sails.locals.SENDGRID_PASSWORD
+    user: '<your email>',
+    pass: '<your email app password>'
   },
   templateDir: 'views/emailTemplates',
-  from: sails.locals.SENDGRID_AUTHORIZED_MAIL,
-  testMode: true,
+  from: '<your mail>',
+  testMode: false,
   ssl: false
 };

@@ -109,8 +109,7 @@ module.exports = {
       email: inputs.email,
       // TODO: But encrypt the password first
       password: inputs.password
-    })
-      .exec(cb);
+    }).exec(cb);
   },
 
 };

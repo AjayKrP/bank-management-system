@@ -23,5 +23,10 @@ module.exports = {
     }
   },
 
+  isAccountExist: function (inputs, cb) {
+    console.log(inputs);
+    AccountInfo.findOne({user: inputs.id}).exec(cb);
+  }
+
 };
 
