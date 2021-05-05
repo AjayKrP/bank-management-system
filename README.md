@@ -75,3 +75,6 @@ Steps to run Application:
 3. Now open config/email.js and add correct username and password for the app
 4. Now you are ready to use our banking App.
 
+My assumptions:
+1. I haven't added branch code in the design. I'm assuming this application is only for one bank. This can be done but due to time lack haven't added it.
+2. I haven't added account type of the users. Currently all users will have only one type of account.
